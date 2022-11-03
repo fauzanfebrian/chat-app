@@ -1,0 +1,31 @@
+<html>
+
+<head>
+  <script src="https://cdn.socket.io/4.5.3/socket.io.min.js" integrity="sha384-WPFUvHkB1aHA5TDSZi6xtDgkF0wXJcIIxXhC6h8OT8EH3fC5PWro5pWJ1THjcfEi" crossorigin="anonymous"></script>
+  <script>
+    const socket = io('https://446d-114-7-243-86.ngrok.io');
+    socket.on('connect', function() {
+      console.log('Connected');
+
+      socket.emit('events', {
+        test: 'test'
+      });
+      socket.emit('identity', 0, response =>
+        console.log('Identity:', response),
+      );
+    });
+    socket.on('events', function(data) {
+      console.log('event', data);
+    });
+    socket.on('exception', function(data) {
+      console.log('event', data);
+    });
+    socket.on('disconnect', function() {
+      console.log('Disconnected');
+    });
+  </script>
+</head>
+
+<body></body>
+
+</html>
